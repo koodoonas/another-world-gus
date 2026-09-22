@@ -1,0 +1,6 @@
+*.asm text eol=lf
+*.inc text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+Makefile text eol=lf
+*.COM binary

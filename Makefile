@@ -1,0 +1,36 @@
+NASM ?= nasm
+BUILD_DIR ?= build
+NASMFLAGS ?= -w+all -Werror
+
+SOURCE := src/awgus.asm
+INCLUDES := src/gf1.inc
+PROGRAMS := $(BUILD_DIR)/AWGUS.COM $(BUILD_DIR)/OTWGUS.COM
+
+.PHONY: all test-build clean
+
+all: $(PROGRAMS)
+
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
+
+$(BUILD_DIR)/AWGUS.COM: $(SOURCE) $(INCLUDES) | $(BUILD_DIR)
+	$(NASM) $(NASMFLAGS) -f bin -I src/ -o $@ $(SOURCE)
+
+$(BUILD_DIR)/OTWGUS.COM: $(SOURCE) $(INCLUDES) | $(BUILD_DIR)
+	$(NASM) $(NASMFLAGS) -D TARGET_OOTW=1 -f bin -I src/ -o $@ $(SOURCE)
+
+test-build: $(PROGRAMS) | $(BUILD_DIR)
+	$(NASM) $(NASMFLAGS) -D INTEGRATION_TEST=1 -f bin -I src/ \
+		-o $(BUILD_DIR)/AWGINST.COM $(SOURCE)
+	$(NASM) $(NASMFLAGS) -D AUDIO_INTEGRATION_TEST=1 -f bin -I src/ \
+		-o $(BUILD_DIR)/AWGAUDIO.COM $(SOURCE)
+	$(NASM) $(NASMFLAGS) -D TARGET_OOTW=1 -D INTEGRATION_TEST=1 \
+		-f bin -I src/ -o $(BUILD_DIR)/OTWINST.COM $(SOURCE)
+	$(NASM) $(NASMFLAGS) -D TARGET_OOTW=1 -D AUDIO_INTEGRATION_TEST=1 \
+		-f bin -I src/ -o $(BUILD_DIR)/OTWAUDIO.COM $(SOURCE)
+
+clean:
+	rm -f $(PROGRAMS) $(BUILD_DIR)/AWGINST.COM $(BUILD_DIR)/AWGAUDIO.COM \
+		$(BUILD_DIR)/OTWINST.COM $(BUILD_DIR)/OTWAUDIO.COM \
+		$(BUILD_DIR)/*.lst
+	-rmdir $(BUILD_DIR)

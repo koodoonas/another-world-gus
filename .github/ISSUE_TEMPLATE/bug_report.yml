@@ -1,0 +1,77 @@
+name: Hardware or compatibility report
+description: Report a freeze, audio problem, or new hardware result
+title: "[Hardware] "
+labels:
+  - compatibility
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not attach game executables, runtime dumps, BANK files, or other copyrighted game assets.
+
+  - type: dropdown
+    id: launcher
+    attributes:
+      label: Launcher
+      options:
+        - AWGUS.COM
+        - OTWGUS.COM
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: AWGUS version
+      placeholder: 0.3.1-alpha
+    validations:
+      required: true
+
+  - type: textarea
+    id: target
+    attributes:
+      label: Game executable
+      description: Filename, exact byte size, and CRC-32 only.
+    validations:
+      required: true
+
+  - type: textarea
+    id: hardware
+    attributes:
+      label: Hardware
+      description: CPU, GUS model, installed sample RAM, and any relevant chipset settings.
+    validations:
+      required: true
+
+  - type: input
+    id: ultrasnd
+    attributes:
+      label: ULTRASND
+      placeholder: 240,7,7,7,7
+    validations:
+      required: true
+
+  - type: dropdown
+    id: rate
+    attributes:
+      label: Game Sound Blaster rate
+      options:
+        - 10 KHz
+        - 5 KHz
+        - Unknown
+    validations:
+      required: true
+
+  - type: textarea
+    id: result
+    attributes:
+      label: Result
+      description: Describe the exact scene, timing, symptoms, and whether DOS remains responsive.
+    validations:
+      required: true
+
+  - type: textarea
+    id: pan
+    attributes:
+      label: Pan options tested
+      description: State whether the default, /P:C, or a custom layout changes the result.

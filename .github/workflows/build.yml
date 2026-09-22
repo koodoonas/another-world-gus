@@ -1,0 +1,24 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  nasm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Install NASM
+        run: sudo apt-get update && sudo apt-get install --yes nasm
+
+      - name: Build release and test variants
+        run: make test-build
+
+      - name: Show release checksums
+        run: sha256sum build/AWGUS.COM build/OTWGUS.COM
