@@ -13,10 +13,12 @@ by the CPU.
 **Version 0.3.1-alpha is confirmed working on physical hardware with both
 supported game releases.** Music, effects, synchronization, sound-bank
 preload, the intro-to-game transition, and continued gameplay were tested on
-an AMD 386DX-40 with a 1 MiB GUS MAX.
+an AMD 386DX-40 with a 1 MiB GUS MAX. A successful additional real-hardware
+test was completed on a 486/133 with a GUS PnP.
 
-The alpha label remains because compatibility with other GF1 cards, clones,
-RAM sizes, and game executable variants has not been established.
+The alpha label remains because compatibility beyond these tested systems,
+RAM configurations, and exact game executable variants has not been broadly
+established.
 
 ## Download
 
@@ -75,9 +77,10 @@ addresses.
 - `CONFIG.DAT`, normally created by the game's setup program.
 
 Automated coverage uses DOSBox's GUS emulation. Physical testing covers the
-listed `ANOTHER.EXE` and `WORLD.EXE` on a 386DX-40 with a 1 MiB GUS MAX.
-Compatibility with GUS Classic, ACE, Extreme, InterWave, PicoGUS, other clones,
-and partially populated RAM configurations remains to be established.
+listed `ANOTHER.EXE` and `WORLD.EXE` on a 386DX-40 with a 1 MiB GUS MAX. An
+additional 486/133 and GUS PnP configuration has also run the patch
+successfully. Compatibility with GUS Classic, ACE, Extreme, PicoGUS, other
+clones, and other RAM configurations remains to be established.
 
 ## Installation and use
 
@@ -122,7 +125,8 @@ restored.
 
 ## Current limitations and risks
 
-- Hardware verification currently covers one 386DX-40 and one 1 MiB GUS MAX.
+- Hardware verification currently covers a 386DX-40 with a 1 MiB GUS MAX and
+  a 486/133 with a GUS PnP. The GUS PnP RAM population was not recorded.
 - Default playback is verified; the `/P:C` and custom pan parsers pass emulator
   integration tests, but their audible placement has not been separately
   characterized on hardware.
