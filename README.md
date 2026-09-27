@@ -175,6 +175,16 @@ nasm -w+all -Werror -D TARGET_OOTW=1 -f bin -I src/ \
 Release sizes and SHA-256 hashes are recorded in `docs/VALIDATION.md` and the
 release checksum file.
 
+## Other GUS Patches
+
+[Gravis Ultrasound Game Patches](https://github.com/koodoonas/gus-game-patches-and-fixes)
+
+## AI usage disclosure
+
+These patches have been heavily assisted by AI and, in some cases, developed almost entirely with its help.
+
+I remain ambivalent about AI and its human and environmental costs. But since it’s already here, I might as well use it for something fun until it consumes us all.
+
 ## Source and licensing boundary
 
 All distributed source in this repository is newly written compatibility code
